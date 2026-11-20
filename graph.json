@@ -1,0 +1,114 @@
+{
+  "title": "Binding affinity v2",
+  "subtitle": "RF-Score reproduction \u00b7 reviewed example",
+  "nodes": [
+    {
+      "id": "question",
+      "type": "Question",
+      "title": "Can the benchmark be reproduced?",
+      "summary": "Reproduce RF-Score and independently check the assumptions behind LP-PDBBind. The project distinguishes confirmed findings, discrepancies, and open hypotheses.",
+      "sources": [
+        {
+          "path": "README.md",
+          "label": "Project motivation"
+        }
+      ],
+      "status": "Active"
+    },
+    {
+      "id": "method",
+      "type": "Method",
+      "title": "Freeze the internal baseline",
+      "summary": "Three fixed 100-tree forests used 7,393 noncovalent training complexes and a training-only 36-feature mask. Settings and seeds were frozen before test reporting; no test-based model selection was performed.",
+      "sources": [
+        {
+          "path": "BASELINE-RESULTS.md",
+          "label": "Internal baseline configuration"
+        },
+        {
+          "path": "NEXT-STEPS.md",
+          "label": "Baseline follow-up"
+        }
+      ],
+      "status": "Complete"
+    },
+    {
+      "id": "internal",
+      "type": "Result",
+      "title": "Internal test evaluation",
+      "summary": "Test RMSE was 1.5516 \u00b1 0.0075 p-affinity, or 2.1167 \u00b1 0.0102 kcal/mol on the project's comparison scale, versus 2.10 \u00b1 0.003 reported in the journal. Similar means do not establish exact reproduction: settings, conversion, sample provenance, and SD convention remain uncertain.",
+      "figure": "outputs/affinity-distributions.png",
+      "sources": [
+        {
+          "path": "BASELINE-RESULTS.md",
+          "label": "Internal results and caveats"
+        }
+      ],
+      "status": "Complete"
+    },
+    {
+      "id": "external",
+      "type": "Experiment",
+      "title": "Evaluate on BDB2020+",
+      "summary": "The frozen models were evaluated on 115 records without refitting or seed selection. RMSE was 1.2088 \u00b1 0.0206 p-affinity, or 1.6491 \u00b1 0.0282 kcal/mol on the project scale, versus 1.61 \u00b1 0.008 in the journal; the cause of the difference is unknown.",
+      "figure": "outputs/bdb2020-predictions.png",
+      "sources": [
+        {
+          "path": "BASELINE-RESULTS.md",
+          "label": "BDB2020+ evaluation and limitations"
+        }
+      ],
+      "status": "Complete"
+    },
+    {
+      "id": "questions",
+      "type": "Open question",
+      "title": "Resolve remaining uncertainties",
+      "summary": "The authors' exact settings and conversion remain unconfirmed. Similarity overlap, assay provenance, historical membership, and coordinate preparation require further investigation.",
+      "sources": [
+        {
+          "path": "NEXT-STEPS.md",
+          "label": "Remaining baseline questions"
+        },
+        {
+          "path": "BASELINE-RESULTS.md",
+          "label": "Evaluation limitations"
+        }
+      ],
+      "status": "Open"
+    }
+  ],
+  "edges": [
+    {
+      "from": "question",
+      "to": "method",
+      "relation": "investigated by",
+      "basis": "Curated from project documents; review before treating as a causal relationship."
+    },
+    {
+      "from": "method",
+      "to": "internal",
+      "relation": "evaluated by",
+      "basis": "Curated from project documents; review before treating as a causal relationship."
+    },
+    {
+      "from": "internal",
+      "to": "external",
+      "label": "follow-up",
+      "relation": "followed by",
+      "basis": "Curated from project documents; review before treating as a causal relationship."
+    },
+    {
+      "from": "internal",
+      "to": "questions",
+      "relation": "followed by",
+      "basis": "Curated from project documents; review before treating as a causal relationship."
+    },
+    {
+      "from": "external",
+      "to": "questions",
+      "relation": "raises",
+      "basis": "Curated from project documents; review before treating as a causal relationship."
+    }
+  ]
+}
