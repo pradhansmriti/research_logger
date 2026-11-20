@@ -1,5 +1,7 @@
 # Research Logger — local prototype
 
+A new way to organize research projects aided by LLMs.
+
 A local browser notebook for research repositories with reviewable Markdown drafts. It reads explicit questions, experiment summaries, statuses, and relationships from Markdown using only Python’s standard library. For `binding_affinity_v2` without structured entries, it shows a curated E00 example.
 
 ## Run
